@@ -4,11 +4,10 @@ import { cities } from "./cities";
 import Table from "./Table";
 function App() {
   const [query, setQuery] = useState("");
+  const keys = ["name", "state"];
   const search = (data) => {
-    return data.filter(
-      (item) =>
-        item.name.toLowerCase().includes(query) ||
-        item.state.toLowerCase().includes(query)
+    return data.filter((item) =>
+      keys.some((key) => item[key].toLowerCase().includes(query))
     );
   };
   return (
